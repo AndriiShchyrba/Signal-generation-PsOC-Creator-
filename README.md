@@ -12,3 +12,31 @@ The IDAC component is in the component catalog as follows Analog -> DAC -> Curre
 The DAC setup window is shown in Figure 1
 
 ![1 1](https://user-images.githubusercontent.com/64357748/85798406-15d38980-b746-11ea-83e1-2b0eaba5b1e5.jpg)
+
+### 2. Timer
+
+Timer for generating time samples with a frequency of 24 MHz, it is located in the window with the components by Digital-> Functions-> Timer. Let's place the Timer component on the circuit and call it Timer. The timer will generate short-term pulses with a specified period, which will cause an interruption. In the interrupt processing subroutine, we will display the corresponding sample on the DAC. To organize interrupts to the output "tc" components Timer connect the component Interrupt, the implementation of which is called isr. The Interrupt component is located in the component window via System-> Interrupt.
+
+The Timer_ setting window is shown in Figure 1a
+
+
+### 3. Display 
+
+The display on which we will display data about the name of the signal and the mode in which we currently work (mode 1 displays Fmod = 0.2F, mode 2 - Fmod = 0.1F). The display is in the window with the components by: Display -> Character LCD, let's call it LCD, no additional settings with this component are required.
+
+### 4. Mode selection button
+
+It will switch between modes. You can find the button by: Ports and pins -> Analog pin. After adding a button to the circuit, open the settings, name Pin_mode and check the box next to Digital input, as shown in Fig. 
+
+### 5. The Start button
+(Pin_gen) is selected similarly to the previous one.
+
+After making the appropriate settings, we obtain a ready-made diagram of the hardware of the generator, which is presented in Fig. 7
+
+
+We will generate the Start signal with one of the toggle switches on the additional board to the Pioneer Kit. We have a choice of six toggle switches, respectively ports from P1.0 to P1.5. We need two toggle switches: One to select the mode, the other to start the generation. Let's use port P1.1 to select the mode and P1.0 to start generation. Also, to connect the DAC to the PSoC4 output, we will give the P3.0 port to the Pin_analog_out pin, and P2 to the display [6: 0]. This is shown in Figures - 8 a, b.
+
+
+This completes the drawing of the scheme and the configuration of the implemented components in the project. Then it remains to open the file "main.c" and write the program part.
+ 
+
