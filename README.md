@@ -10,4 +10,5 @@ To implement this task we need:
 The IDAC component is in the component catalog as follows Analog -> DAC -> CurrentDAC. The DAC output must be connected to the PSoC4 output. To do this, place on the diagram of the component Analog Pin (analog pin), which is located along the path Ports and Pins -> Analog Pin. Let's call this component Pin_analog_out.
 
 The DAC setup window is shown in Figure 1
+
 ![1 1](https://user-images.githubusercontent.com/64357748/85798406-15d38980-b746-11ea-83e1-2b0eaba5b1e5.jpg)
