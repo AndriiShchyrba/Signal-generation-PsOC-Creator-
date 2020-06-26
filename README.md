@@ -64,6 +64,7 @@ The button interrupt processing subroutine works according to the following algo
  
 Formation of signal samples according to the following algorithm:
 
+![1](https://user-images.githubusercontent.com/64357748/85873656-174e9180-b7da-11ea-9199-02b18c16ec19.jpg)
 
 Display the signal according to the following algorithm:
  ![1 11](https://user-images.githubusercontent.com/64357748/85872070-f127f200-b7d7-11ea-871f-b924eb438c56.jpg)
@@ -127,3 +128,10 @@ Output the frequency response of our filter, as we see at -3dB at the point of i
  Amplitude-frequency characteristics of the filter
 
 ![1 19](https://user-images.githubusercontent.com/64357748/85872106-f8e79680-b7d7-11ea-948c-bd9eee427112.jpg)
+
+# Result
+
+We have developed the hardware and software of the functional signal generator according to the individual task. The explanatory note and appendices were duly executed.
+The signal generator is built using a modern microcontroller. The analog signal must be generated using a digital-to-analog converter (DAC).
+The development of the generator consisted of two parts - hardware and software. During hardware development, I learned about the capabilities and technical characteristics of software and hardware components (DAC, timer, delay, visualization), learned that according to the needs of development, you can choose the bit rate of the timer at 8, 16, 24 and 32 bits in the DAC component you can select two ranges and also select the bit rate. She was also convinced that the PSoC Creator development environment and the programmable system on the PSoC4 chip provide great functionality for the development of both educational devices and devices for commercial and domestic use.
+During the development of the software part, the logic and sequence of hardware components were developed. The program was written in S.
