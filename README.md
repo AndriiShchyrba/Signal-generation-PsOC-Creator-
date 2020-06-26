@@ -21,6 +21,9 @@ The Timer_ setting window is shown in Figure 1a
 
 ![1 2](https://user-images.githubusercontent.com/64357748/85855613-355ac880-b7bf-11ea-94eb-6b6b518c104e.jpg)
 
+The timer for the duration of the generation is called TimerDuration. The optimization frequency of this component is a 32 kHz drive (internal LFCLK generator in PSoC4). At the time we were working with the economical internal resources of PSoC4, we needed the least amount of lower coefficients, and then there was the least 24MGc, like TimerMain.
+
+![1 3](https://user-images.githubusercontent.com/64357748/85872036-e8cfb700-b7d7-11ea-94d9-35742860eacc.jpg)
 ### 3. Display 
 
 The display on which we will display data about the name of the signal and the mode in which we currently work (mode 1 displays Fmod = 0.2F, mode 2 - Fmod = 0.1F). The display is in the window with the components by: Display -> Character LCD, let's call it LCD, no additional settings with this component are required.
@@ -29,14 +32,22 @@ The display on which we will display data about the name of the signal and the m
 
 It will switch between modes. You can find the button by: Ports and pins -> Analog pin. After adding a button to the circuit, open the settings, name Pin_mode and check the box next to Digital input, as shown in Fig. 
 
+![1 4](https://user-images.githubusercontent.com/64357748/85872040-ea00e400-b7d7-11ea-9555-ef9e71c7c2b2.jpg)
+
 ### 5. The Start button
 (Pin_gen) is selected similarly to the previous one.
 
-After making the appropriate settings, we obtain a ready-made diagram of the hardware of the generator, which is presented in Fig. 7
+![1 5](https://user-images.githubusercontent.com/64357748/85872046-ea997a80-b7d7-11ea-8870-af92df9f1d4c.jpg)
 
+After making the appropriate settings, we obtain a ready-made diagram of the hardware of the generator
 
-We will generate the Start signal with one of the toggle switches on the additional board to the Pioneer Kit. We have a choice of six toggle switches, respectively ports from P1.0 to P1.5. We need two toggle switches: One to select the mode, the other to start the generation. Let's use port P1.1 to select the mode and P1.0 to start generation. Also, to connect the DAC to the PSoC4 output, we will give the P3.0 port to the Pin_analog_out pin, and P2 to the display [6: 0]. This is shown in Figures - 8 a, b.
+![1 6](https://user-images.githubusercontent.com/64357748/85872049-eb321100-b7d7-11ea-8f81-497bc9d53655.jpg)
 
+We will generate the Start signal with one of the toggle switches on the additional board to the Pioneer Kit. We have a choice of six toggle switches, respectively ports from P1.0 to P1.5. We need two toggle switches: One to select the mode, the other to start the generation. Let's use port P1.1 to select the mode and P1.0 to start generation. Also, to connect the DAC to the PSoC4 output, we will give the P3.0 port to the Pin_analog_out pin, and P2 to the display [6: 0].
+
+![1 7](https://user-images.githubusercontent.com/64357748/85872053-ecfbd480-b7d7-11ea-91c7-6903cea2e974.jpg)
+
+![1 8](https://user-images.githubusercontent.com/64357748/85872057-ed946b00-b7d7-11ea-9fdc-1ce870668257.jpg)
 
 This completes the drawing of the scheme and the configuration of the implemented components in the project. Then it remains to open the file "main.c" and write the program part.
  
@@ -45,43 +56,52 @@ This completes the drawing of the scheme and the configuration of the implemente
 Development should begin with drawing up of algorithm of actions of each component of our device.
 The main program works according to the following algorithm:
  
+ ![1 9](https://user-images.githubusercontent.com/64357748/85872063-eec59800-b7d7-11ea-9ab6-2143e08bf12c.jpg)
+ 
 The button interrupt processing subroutine works according to the following algorithm:
+
+![1 10](https://user-images.githubusercontent.com/64357748/85872066-ef5e2e80-b7d7-11ea-8be4-f1efa015a876.jpg)
  
 Formation of signal samples according to the following algorithm:
- 
+
 
 Display the signal according to the following algorithm:
+ ![1 11](https://user-images.githubusercontent.com/64357748/85872070-f127f200-b7d7-11ea-871f-b924eb438c56.jpg)
+
  
 Now you need to display the idea in the form of code that will be placed in the application. Let's check if the program works correctly. To do this, click on the Program button at the top of the window, or use the hot keys Ctrl + F5. After compiling and flashing, here is what the program displayed:
 
 
+Mode selector toggle in position 1, Stationary mode.
 
+![1 12](https://user-images.githubusercontent.com/64357748/85872072-f1c08880-b7d7-11ea-8b62-46f8e1befa77.jpg)
 
  
-Fig. 9.1 Mode selector toggle in position 1, Stationary mode.
+Oscillogram: mode selection in position 1, Stationary mode.
 
- 
-Fig. 9.2. Oscillogram: mode selection in position 1, Stationary mode.
-
-
+![1 13](https://user-images.githubusercontent.com/64357748/85872076-f2f1b580-b7d7-11ea-8af5-e7b76b4bd555.jpg)
 
 The display of the mode in which we are works. Let's see if the AM signal is generated. To do this, move the toggle switch to the first position and start the generation with the upper toggle switch. We will follow this on the oscilloscope.
 
- 
-Fig. 9.3 Mode selector toggle in position 1, Run mode
+ ![1 14](https://user-images.githubusercontent.com/64357748/85872079-f38a4c00-b7d7-11ea-9a70-951cdcd26def.jpg)
 
- 
-Fig. 9.4. Oscillogram: mode selection in position 1, Run mode.
+Mode selector toggle in position 1, Run mode
 
+ ![1 15](https://user-images.githubusercontent.com/64357748/85872086-f4bb7900-b7d7-11ea-9b81-292621804bfb.jpg)
+ 
+ Oscillogram: mode selection in position 1, Run mode.
+
+![1 16](https://user-images.githubusercontent.com/64357748/85872090-f5eca600-b7d7-11ea-91fd-6a5a2aab4e42.jpg)
 
 As you can see from the waveform, the program outputs the AM signal with a given frequency. Let's switch the toggle switch to another mode. The program outputs the frequency change by 0.1F, so we can conclude that the program works.
 
- 
-Fig. 9.5 Mode selector toggle switch in position 2, Run mode
+Mode selector toggle switch in position 2, Run mode
 
- 
-Fig. 9.6. Oscillogram: mode selection in position 2, Run mode.
+![1 16](https://user-images.githubusercontent.com/64357748/85872090-f5eca600-b7d7-11ea-91fd-6a5a2aab4e42.jpg)
 
+ Oscillogram: mode selection in position 2, Run mode.
+ 
+![1 17](https://user-images.githubusercontent.com/64357748/85872097-f71dd300-b7d7-11ea-9cf6-bcbc88596e2a.jpg)
 
 # Calculation of the low-pass filter
 The scheme of the filter on the basis of RC-circuit which cuts off high-frequency oscillations is shown. The reactance of the capacitor decreases with frequency, and therefore the capacitor transmits only high-frequency signals, and the better, the higher the frequency. As a result, at high frequencies, the capacitor bypasses the signal. Only a low frequency signal will remain at the output of such a quadrupole.
@@ -97,13 +117,13 @@ The time constant is determined by the formula:
 τ = R ∙ C
 τ = 1 〖〖10〗 ^ 3 ∙ 0.398 〖∙ 10〗 ^ (- 6) = 398 μs
 
-
-
 We make the scheme on the calculated parameters:
 
- 
-Fig. 14. The scheme of the low-pass filter.
+The scheme of the low-pass filter.
 Output the frequency response of our filter, as we see at -3dB at the point of intersection with the frequency axis, the frequency is 400 Hz.
  
-Fig. 15. Amplitude-frequency characteristics of the filter
+ ![1 18](https://user-images.githubusercontent.com/64357748/85872104-f84f0000-b7d7-11ea-96b4-4ceee660f958.jpg)
+ 
+ Amplitude-frequency characteristics of the filter
 
+![1 19](https://user-images.githubusercontent.com/64357748/85872106-f8e79680-b7d7-11ea-948c-bd9eee427112.jpg)
