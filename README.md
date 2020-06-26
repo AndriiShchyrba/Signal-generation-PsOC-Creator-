@@ -18,6 +18,7 @@ The DAC setup window is shown in Figure 1
 Timer for generating time samples with a frequency of 24 MHz, it is located in the window with the components by Digital-> Functions-> Timer. Let's place the Timer component on the circuit and call it Timer. The timer will generate short-term pulses with a specified period, which will cause an interruption. In the interrupt processing subroutine, we will display the corresponding sample on the DAC. To organize interrupts to the output "tc" components Timer connect the component Interrupt, the implementation of which is called isr. The Interrupt component is located in the component window via System-> Interrupt.
 
 The Timer_ setting window is shown in Figure 1a
+
 ![1 2](https://user-images.githubusercontent.com/64357748/85855613-355ac880-b7bf-11ea-94eb-6b6b518c104e.jpg)
 
 ### 3. Display 
