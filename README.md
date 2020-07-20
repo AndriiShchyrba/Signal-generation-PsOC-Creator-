@@ -92,7 +92,6 @@ Mode selector toggle in position 1, Run mode
  
  Oscillogram: mode selection in position 1, Run mode.
 
-![1 16](https://user-images.githubusercontent.com/64357748/85872090-f5eca600-b7d7-11ea-91fd-6a5a2aab4e42.jpg)
 
 As you can see from the waveform, the program outputs the AM signal with a given frequency. Let's switch the toggle switch to another mode. The program outputs the frequency change by 0.1F, so we can conclude that the program works.
 
